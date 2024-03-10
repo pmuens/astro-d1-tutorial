@@ -17,7 +17,8 @@
     "db:migrate:preview": "wrangler d1 migrations apply --env preview astro-d1-preview",
     "db:studio:local": "cross-env LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) drizzle-kit studio",
     "db:studio:preview": "cross-env DB_NAME='astro-d1-preview' WRANGLER_CONFIG='--environment=preview' drizzle-kit studio",
-    "db:studio:prod": "drizzle-kit studio"
+    "db:studio:prod": "drizzle-kit studio",
+    "pages:deploy": "npm run build && npx wrangler pages deploy ./dist"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.6",
