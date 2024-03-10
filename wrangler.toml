@@ -1,0 +1,14 @@
+node_compat = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "astro-d1-prod"
+database_id = "5a47e0a5-a185-4182-b46d-1249520509ab"
+preview_database_id = "DB"
+
+[env.preview]
+name = "preview"
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "astro-d1-preview"
+database_id = "686ae900-aaea-4c69-8499-b0c8ea8c960d"
