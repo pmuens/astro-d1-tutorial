@@ -1,47 +1,65 @@
-# Astro Starter Kit: Minimal
+# Astro + Cloudflare D1
+
+Code written by following the [Tutorial Blog Post](https://kevinkipp.com/blog/going-full-stack-on-astro-with-cloudflare-d1-and-drizzle) by [Kevin Kipp](https://kevinkipp.com).
+
+## Setup
+
+1. `git clone <url>`
+2. `npm install`
+3. `cp .env.example .env`
+4. `npm run dev`
+5. `npm run build`
+6. `npm run pages:deploy`
+
+## Cloudflare
+
+### Setup
+
+1. [Manually setup](https://developers.cloudflare.com/pages/functions/bindings/#d1-databases) the D1 binding(s) for "Preview" and "Production"
+1. `npm run pages:deploy`
+1. `npm run db:migrate:preview`
+1. `npm run db:migrate:prod`
+
+### Cleanup
+
+1. `npx wrangler d1 list`
+2. `npx wrangler pages project list`
+3. `npx wrangler pages project delete <name>`
+4. `npx wrangler d1 delete <name>`
+5. `npx wrangler d1 list`
+6. `npx wrangler pages project list`
+
+## Useful Commands
 
 ```sh
-npm create astro@latest -- --template minimal
+npm run dev
+npm run start
+npm run build
+npm run preview
+
+npm run lint
+npm run format
+npm run check
+
+npm run pages:deploy
+npm run db:generate
+npm run db:migrate:local
+npm run db:migrate:prod
+npm run db:migrate:preview
+npm run db:studio:local
+npm run db:studio:preview
+npm run db:studio:prod
+
+npx astro add <name>
+
+npx wrangler pages project create <name>
+npx wrangler pages project list
+npx wrangler pages project delete <name>
+
+npx wrangler d1 create <name>
+npx wrangler d1 execute <name> [--local] --file=./<name>.sql
+npx wrangler d1 execute <name> [--local] --command="select * from <name>;"
+npx wrangler d1 list
+npx wrangler d1 backup
+npx wrangler d1 delete <name>
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
